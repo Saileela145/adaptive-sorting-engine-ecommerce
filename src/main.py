@@ -1,15 +1,21 @@
 
-
 from sample_data import get_sample_products
 from data_analyzer import DataAnalyzer
+from decision_engine import DecisionEngine
 
 if __name__ == "__main__":
     products = get_sample_products()
 
     analyzer = DataAnalyzer()
+    decision_engine = DecisionEngine()
 
-    print("Analyzing data for PRICE sorting:\n")
     analysis = analyzer.analyze(products, "price")
 
-    for key, value in analysis.items():
-        print(f"{key}: {value}")
+    print("Data Analysis Result:")
+    for k, v in analysis.items():
+        print(f"{k}: {v}")
+
+    strategy = decision_engine.decide(analysis)
+
+    print("\nSelected Sorting Strategy:")
+    print(strategy)
